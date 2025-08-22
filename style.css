@@ -1,5 +1,4 @@
-
-        @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 
         *, *:before, *:after{
           -webkit-box-sizing: border-box;
@@ -14,7 +13,7 @@
           cursor: none;
         }
 
-        /* CUSTOM CURSOR */
+        /*CURSOR*/
         .custom-cursor {
           position: fixed;
           top: 0;
@@ -34,7 +33,6 @@
           transition: transform 0.3s ease;
         }
 
-        /* NAVIGATION */
         nav {
           position: fixed;
           top: 0;
@@ -125,7 +123,6 @@
           border-radius: 5px;
         }
 
-        /* Dropdown menu */
         .nav-menu ul {
           display: none;
           position: absolute;
@@ -157,7 +154,6 @@
           border-radius: 0 0 5px 5px;
         }
 
-        /* Mobile Menu Button */
         .mobile-menu-btn {
           display: none;
           flex-direction: column;
@@ -240,7 +236,6 @@
           box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Console Container - positioned in hero */
         .console-container {
           position: absolute;
           top: 50%;
@@ -258,7 +253,6 @@
           left: 10px;
         }
 
-        /* Body with dot pattern */
         body {
           --dot-bg: black;
           --dot-color: white;
@@ -272,9 +266,8 @@
           transition: all 0.3s ease;
         }
 
-        /* DARK THEME */
         body.dark-theme {
-          --dot-bg: rgb(255, 255, 255);
+          --dot-bg: white;
           --dot-color: black;
         }
 
@@ -334,7 +327,6 @@
           background-color: rgb(255, 255, 255);
         }
 
-        /* RESPONSIVE DESIGN */
         @media screen and (max-width: 768px) {
           .mobile-menu-btn {
             display: flex;
@@ -372,14 +364,16 @@
             padding: 15px 20px;
           }
 
-          .nav-menu ul {
-            position: static;
-            display: block;
-            background: transparent;
-            box-shadow: none;
-            margin-top: 10px;
-          }
-
+        .nav-menu ul {
+          position: static;
+          display: none;
+          background: transparent;
+          box-shadow: none;
+          margin-top: 10px;
+        }
+        .nav-menu li.open > ul {
+          display: block;
+        }
           .nav-menu ul li a {
             font-size: 1em;
             padding: 10px 15px;
@@ -409,7 +403,7 @@
           }
 
           .console-container {
-            display: none; /* Hide on mobile for better readability */
+            display: none; 
           }
         }
 
