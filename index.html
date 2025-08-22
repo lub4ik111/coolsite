@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav role='navigation'>
+    <div class="nav-container">
+        <div class="logo">Любчик</div>
+        <ul class="nav-menu">
+            <li><a href="#" class="link">Home</a></li>
+            <li><a href="#" class="link">About</a>
+                <ul>
+                    <li><a href="#" class="link">Our team</a></li>
+                    <li><a href="#" class="link">History</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="link">Clients</a></li>
+            <li><a href="#" class="link">Contact Us</a></li>
+        </ul>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="console-container">
+        <span id='text'></span>
+        <div class='console-underscore' id='console'>&#95;</div>
+    </div>
+    <div class="hero-content">
+        <h1>Hi! Nice to see you here</h1>
+        <p>Do you want to see something cool?</p>
+        <a href="https://www.youtube.com/watch?v=yY5eLgn9HQo" class="cta-button link">JUST PRESS ME</a>
+    </div>
+</section>
+
+<script>
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+    const themeText = themeToggle.querySelector('.theme-text');
+    const body = document.body;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-theme');
+        themeIcon.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-theme');
+        
+        if (body.classList.contains('dark-theme')) {
+            themeIcon.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeIcon.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    if (window.matchMedia("(hover: hover)").matches) {
+        document.addEventListener('DOMContentLoaded', function() {
+            var cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            var linkElements = document.querySelectorAll('.link, .cta-button');
+            linkElements.forEach(function(element) {
+                element.addEventListener('mouseenter', function() {
+                    cursor.classList.add('scale-up');
+                });
+
+                element.addEventListener('mouseleave', function() {
+                    cursor.classList.remove('scale-up');
+                });
+            });
+        });
+    }
+
+</script>
+</body>
+</html>
